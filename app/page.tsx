@@ -1,103 +1,72 @@
 import Image from "next/image";
+import welcomeImage from "@/public/dibujo-bienvenida.svg";
+import { BackgroundSVG } from "./components/atoms/backgroundSVG";
+import { ClipPathDesktop, ClipPathMobile } from "./components/atoms/clipPaths";
+import { ReviewCard } from "./components/molecules/reviews";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <main className="relative min-h-svh overflow-hidden">
+      <BackgroundSVG />
+      <ClipPathDesktop />
+      <ClipPathMobile />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      <section className="flex px-8 items-center justify-evenly h-screen relative z-10 flex-col">
+        <div className="flex flex-col lg:flex-row items-center justify-evenly w-full">
+          <div className="max-w-2xl">
+            <h1 className="text-5xl font-bold mb-4">Bienvenido a Chronicle</h1>
+            <p className="text-lg mb-8 text-neutral-500">
+              Una aplicación en donde puedes guardar tus reseñas de películas,
+              series y videojuegos. Explora reseñas de otros usuarios y comparte
+              tus opiniones.
+            </p>
+            <div className="flex md:justify-start">
+              <a
+                href="/about"
+                className="px-8 py-3 [background-color:#0099FF] text-white rounded-lg hover:[background-color:#364156] transition-colors"
+              >
+                EXPLORAR RESEÑAS
+              </a>
+            </div>
+          </div>
+
+          <Image
+            src={welcomeImage}
+            alt="Bienvenida a Chronicle"
+            width={500}
+            height={300}
+            className="mt-8"
+          />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        <section className="flex flex-col items-center justify-center w-full">
+          <div className="flex flex-wrap md:flex-nowrap gap-6 w-full">
+            <div className="rotate-[-2deg] md:hover:rotate-0 transition-transform duration-300 w-full md:w-auto">
+              <ReviewCard
+                image="https://images.unsplash.com/photo-1521747116042-5a810fda9664?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60"
+                title="Inception"
+                description="Una película de ciencia ficción que desafía la realidad y explora el mundo de los sueños."
+                rating={4.5}
+              />
+            </div>
+            <div className="rotate-[1.5deg] md:hover:rotate-0 transition-transform duration-300 w-full md:w-auto">
+              <ReviewCard
+                image="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60"
+                title="The Witcher"
+                description="Una serie de fantasía épica basada en la saga de libros y videojuegos, llena de magia y aventuras."
+                rating={4.0}
+              />
+            </div>
+            <div className="rotate-[-1deg] md:hover:rotate-0 transition-transform duration-300 w-full md:w-auto">
+              <ReviewCard
+                image="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60"
+                title="The Legend of Zelda: Breath of the Wild"
+                description="Un videojuego de aventuras en un mundo abierto, donde los jugadores pueden explorar y descubrir secretos."
+                rating={5.0}
+              />
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
   );
 }
