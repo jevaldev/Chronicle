@@ -6,7 +6,7 @@ export const ListCard = (list: ContentListCardProps) => {
     <a
       key={list.id}
       href={`/lists/${list.id}`}
-      className="p-4 flex flex-col gap-2 border-b-1 border-neutral-400 hover:bg-[#f6f7f9] transition-colors cursor-pointer"
+      className="py-4 flex flex-col gap-2 border-2 border-transparent border-b-neutral-400 hover:border-2 hover:border-[#0099FF] transition-colors cursor-pointer"
       aria-label={`Ver lista de contenido: ${list.name}`}
       role="listitem"
     >

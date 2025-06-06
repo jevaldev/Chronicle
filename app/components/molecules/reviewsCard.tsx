@@ -15,8 +15,8 @@ export function ReviewCard({
   const emptyStars = 5 - filledStars - (hasHalfStar ? 1 : 0);
 
   return (
-    <div className="flex gap-4 w-full px-6 py-4 transition-all overflow-hidden border-b-1 border-neutral-400">
-      <div className="relative w-24 md:w-[160px] h-[213px] flex-shrink-0">
+    <div className="flex gap-4 w-full py-4 transition-all overflow-hidden border-b-1 border-neutral-400">
+      <div className="relative w-[120px] md:w-[160px] h-[213px] flex-shrink-0">
         <Image src={image} alt={title} fill className="object-cover rounded" />
       </div>
       <section className="flex flex-col gap-2 flex-grow overflow-hidden">
@@ -26,16 +26,13 @@ export function ReviewCard({
           </h3>
 
           <div className="flex items-center gap-2">
-            <div className="flex items-center gap-1 text-yellow-500">
+            <div className="flex items-center gap-1 text-[#0099FF]">
               {Array.from({ length: filledStars }).map((_, i) => (
                 <StarSVG key={`star-filled-${i}`} colorSVG="" />
               ))}
               {hasHalfStar && <HalfStarSVG key="half-star" />}
               {Array.from({ length: emptyStars }).map((_, i) => (
-                <EmptyStar
-                  key={`star-empty-${i}`}
-                  colorSVG="oklch(85.2% 0.199 91.936)"
-                />
+                <EmptyStar key={`star-empty-${i}`} colorSVG="#0099FF" />
               ))}
             </div>
             <span className="text-sm truncate text-[#011638]">{user}</span>

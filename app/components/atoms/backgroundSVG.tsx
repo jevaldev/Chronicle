@@ -3,7 +3,7 @@ import backgroundImage from "@/public/frame_background.svg";
 
 export function BackgroundSVG() {
   return (
-    <div className="absolute inset-0 -z-10">
+    <div className="absolute inset-0 -z-10 h-screen">
       <Image
         src={backgroundImage}
         alt="Fondo de la página"

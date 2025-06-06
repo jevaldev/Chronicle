@@ -1,7 +1,7 @@
 export function ClipPathDesktop() {
   return (
     <div
-      className="absolute inset-0 -z-0 bg-[#F9FAFC] lg:block hidden"
+      className="absolute inset-0 -z-0 bg-[#F9FAFC] lg:block hidden h-screen"
       style={{
         clipPath: "polygon(0 0, 80% 0, 40% 100%, 0% 100%)",
       }}

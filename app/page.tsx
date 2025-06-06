@@ -24,22 +24,22 @@ export default function Home() {
   });
 
   return (
-    <main className="relative">
+    <main className="relative flex-1 z-10 ">
       <BackgroundSVG />
       <ClipPathDesktop />
       <ClipPathMobile />
 
-      <section className="px-8 h-screen relative z-10 flex-col">
+      <section className="lg:px-0 px-8 relative z-10">
         <HeroSection />
         <FeatureSection />
 
-        <section className="py-16 relative z-10 grid gap-8 grid-cols-3 max-w-7xl mx-auto">
+        <section className="flex flex-col gap-10 md:grid md:gap-8 md:grid-cols-3 max-w-7xl mx-auto">
           <div className="col-span-2 flex flex-col gap-2">
             <header className="flex items-center justify-between border-b-2 border-neutral-400 pb-2">
-              <h2 className="text-xl font-bold text-neutral-700 ">
+              <h2 className="lg:text-xl font-bold text-neutral-700 md:text-base">
                 Reseñas recientes
               </h2>
-              <a className="text-neutral-500 cursor-pointer hover:underline hover:text-neutral-700 transition-colors">
+              <a className="text-neutral-500 cursor-pointer hover:underline hover:text-[#0099FF] transition-colors lg:text-base md:text-sm">
                 Ver más reseñas
               </a>
             </header>
@@ -59,11 +59,11 @@ export default function Home() {
 
           <div className="col-span-1 flex flex-col gap-2">
             <header className="flex items-center justify-between border-b-2 border-neutral-400 pb-2">
-              <h2 className="text-xl font-bold text-neutral-700 ">
+              <h2 className="lg:text-xl font-bold text-neutral-700 text-base">
                 Listas de contenido
               </h2>
-              <a className="text-neutral-500 cursor-pointer hover:underline hover:text-neutral-700 transition-colors">
-                Ver más Listas
+              <a className="text-neutral-500 cursor-pointer hover:underline hover:text-[#0099FF] transition-colors text-sm lg:text-base">
+                Ver más
               </a>
             </header>
             <div className="flex flex-col gap-4 w-full" role="list">
