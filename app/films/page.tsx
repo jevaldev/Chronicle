@@ -1,44 +1,47 @@
-import Carousel from "../components/templates/carousel";
-import { Movie } from "../types/movies";
+import { GridFilms } from "../components/organisms/gridFilms";
+import { RecommendedFilms } from "../components/organisms/recommendedFilms";
+import { getMovies } from "../lib/omdb";
 
-async function getMovies(query: string): Promise<Movie[]> {
-  const apiKey = process.env.OMDB_API_KEY;
+type Props = {
+  searchParams: {
+    query?: string;
+    type?: string;
+    sort?: string;
+  };
+};
 
-  const resPage1 = await fetch(
-    `https://www.omdbapi.com/?apikey=${apiKey}&s=${query}&page=1`
-  );
-  const dataPage1 = await resPage1.json();
+export default async function FilmsPage({ searchParams }: Props) {
+  const query = searchParams.query || "";
+  const sort = searchParams.sort || "year-desc";
+  const type = searchParams.type || "";
 
-  const resPage2 = await fetch(
-    `https://www.omdbapi.com/?apikey=${apiKey}&s=${query}&page=2`
-  );
-  const dataPage2 = await resPage2.json();
+  const movies = await getMovies(query, type);
 
-  const combinedResults = [...dataPage1.Search, ...dataPage2.Search];
-
-  return combinedResults;
-}
-
-export default async function FilmsPage() {
-  const batmanMovies = await getMovies("batman");
-  const spiderManMovies = await getMovies("spider-man");
+  if (sort === "year-desc") movies.sort((a, b) => b.Year.localeCompare(a.Year));
+  if (sort === "year-asc") movies.sort((a, b) => a.Year.localeCompare(b.Year));
+  if (sort === "title-asc")
+    movies.sort((a, b) => a.Title.localeCompare(b.Title));
+  if (sort === "title-desc")
+    movies.sort((a, b) => b.Title.localeCompare(a.Title));
 
   return (
-    <main className="max-w-7xl mx-auto py-8 lg:px-0 px-8">
-      <section className="flex flex-col gap-8">
-        <div>
-          <h2 className="text-xl uppercase text-neutral-600 font-bold border-b-2 border-neutral-400 mb-2">
-            Películas de Batman
-          </h2>
-          <Carousel movies={batmanMovies} />
-        </div>
-        <div>
-          <h2 className="text-xl uppercase text-neutral-600 font-bold border-b-2 border-neutral-400 mb-2">
-            Películas de Spider-Man
-          </h2>
-          <Carousel movies={spiderManMovies} />
-        </div>
-      </section>
-    </main>
+    <section className="lg:px-0 px-8">
+      <article className="flex flex-col gap-8">
+        {query === "" ? (
+          <RecommendedFilms filmName1="spider-man" filmName2="batman" />
+        ) : movies.length === 0 ? (
+          <p className="text-neutral-600">
+            No se encontraron resultados para {query}.
+          </p>
+        ) : (
+          <>
+            <h2 className="text-xl uppercase text-neutral-600 font-bold border-b-2 border-neutral-400 mb-2">
+              Resultados para: {query}
+            </h2>
+            <GridFilms movies={movies} />
+          </>
+        )}
+      </article>
+    </section>
   );
 }

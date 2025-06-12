@@ -1,7 +1,7 @@
-import { Movie } from "@/app/types/movies";
+import { Films } from "@/app/types/movies";
 import Image from "next/image";
 
-export function FilmPoster({ Title, Year, Poster, Type }: Movie) {
+export function FilmPoster({ Title, Year, Poster, Type }: Films) {
   return (
     <picture className="group w-full flex justify-center relative aspect-[2/3] cursor-pointer">
       <Image

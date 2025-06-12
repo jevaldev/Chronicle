@@ -1,5 +1,6 @@
 {
   "conventionalCommits.scopes": [
-    "Home Page"
+    "Home Page",
+    "FilmsPage"
   ]
 }

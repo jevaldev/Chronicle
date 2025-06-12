@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import window from "@/public/window.svg"; // Adjust the path as necessary
+import window from "@/public/window.svg";
 
 export const Navbaar = () => {
   return (
@@ -29,7 +29,7 @@ export const Navbaar = () => {
           </li>
           <li>
             <Link
-              href="/contact"
+              href="/login"
               className="text-gray-700 font-bold hover:[color:#0099FF]"
             >
               INICIAR SESIÓN

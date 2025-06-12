@@ -1,12 +1,12 @@
 "use client";
 
 import { LeftArrow, RightArrow } from "@/app/assets/svg/arrow";
-import { Movie } from "@/app/types/movies";
+import { Films } from "@/app/types/movies";
 import { useRef } from "react";
 import { FilmPoster } from "../molecules/filmPoster";
 
 type Props = {
-  movies: Movie[];
+  movies: Films[];
 };
 
 export default function Carousel({ movies }: Props) {
@@ -14,13 +14,13 @@ export default function Carousel({ movies }: Props) {
 
   const scrollLeft = () => {
     if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: -262, behavior: "smooth" });
+      carouselRef.current.scrollBy({ left: -260, behavior: "smooth" });
     }
   };
 
   const scrollRight = () => {
     if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: 262, behavior: "smooth" });
+      carouselRef.current.scrollBy({ left: 260, behavior: "smooth" });
     }
   };
 
